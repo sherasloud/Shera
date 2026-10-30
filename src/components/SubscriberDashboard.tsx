@@ -35,7 +35,7 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
   
   const handleRecharge = () => {
     onTopUp(topUpAmount);
-    setSuccessMsg(`Successfully added ৳${topUpAmount} via ${selectedGateway.toUpperCase()}! Balance updated.`);
+    setSuccessMsg(`সফলভাবে ৳${topUpAmount} (${selectedGateway.toUpperCase()}) এর মাধ্যমে রিচার্জ করা হয়েছে!`);
     setTimeout(() => setSuccessMsg(null), 4000);
   };
 
@@ -45,46 +45,46 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
     <div className="space-y-6 pb-12">
       
       {/* Welcome Hero Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-slate-900 to-teal-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-emerald-500/20 relative overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
+      <div className="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-emerald-500/20 relative overflow-hidden">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/20 via-transparent to-transparent pointer-events-none" />
         
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
-            <div className="flex items-center space-x-2 text-emerald-400 text-sm font-semibold mb-1">
+            <div className="flex items-center space-x-2 text-emerald-300 text-sm font-semibold mb-1">
               <MapPin className="w-4 h-4" />
               <span>{subscriber.village}</span>
-              <span className="bg-emerald-500/25 text-emerald-300 text-xs px-2 py-0.5 rounded-full">ID: {subscriber.id}</span>
+              <span className="bg-emerald-500/30 text-emerald-200 text-xs px-2 py-0.5 rounded-full">আইডি: {subscriber.id}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Welcome back, {subscriber.name}!
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              স্বাগতম, {subscriber.name}!
             </h1>
-            <p className="text-slate-300 text-sm mt-1">
-              Your village fiber connection is stable. Tower relay #{subscriber.towerId.replace('TOWER-', '')} is operating at optimal bandwidth.
+            <p className="text-slate-200 text-sm mt-1">
+              আপনার গ্রামের ফাইবার ইন্টারনেট সংযোগ সচল ও স্থিতিশীল রয়েছে। টাওয়ার নোড #{subscriber.towerId.replace('TOWER-', '')} থেকে নিরবচ্ছিন্ন ব্যান্ডউইথ পাওয়া যাচ্ছে।
             </p>
           </div>
 
           <div className="flex flex-wrap gap-3">
             <button
               onClick={onOpenSpeedTest}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2.5 rounded-xl flex items-center space-x-2 shadow-lg shadow-emerald-600/30 transition"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-4 py-2.5 rounded-xl flex items-center space-x-2 shadow-lg shadow-emerald-500/30 transition"
             >
               <Zap className="w-4 h-4" />
-              <span>Run Speed Test</span>
+              <span>স্পিড টেস্ট করুন</span>
             </button>
             <button
               onClick={onOpenVouchers}
-              className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-teal-300 font-medium px-4 py-2.5 rounded-xl flex items-center space-x-2 transition"
+              className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-4 py-2.5 rounded-xl flex items-center space-x-2 transition backdrop-blur-sm"
             >
               <ShieldCheck className="w-4 h-4" />
-              <span>Wi-Fi Vouchers</span>
+              <span>ওয়াই-ফাই ভাউচার</span>
             </button>
           </div>
         </div>
       </div>
 
       {successMsg && (
-        <div className="bg-emerald-500/10 border border-emerald-500 text-emerald-300 px-4 py-3 rounded-xl flex items-center space-x-2 animate-bounce">
-          <CheckCircle className="w-5 h-5 text-emerald-400" />
+        <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 px-4 py-3 rounded-xl flex items-center space-x-2 animate-bounce shadow-sm">
+          <CheckCircle className="w-5 h-5 text-emerald-600" />
           <span className="font-medium">{successMsg}</span>
         </div>
       )}
@@ -96,43 +96,43 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
         <div className="lg:col-span-2 space-y-6">
           
           {/* Current Plan Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg relative overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm relative overflow-hidden">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <span className="text-xs uppercase font-bold tracking-wider text-emerald-400">Current Subscription</span>
-                <h3 className="text-xl font-bold text-white mt-0.5">{currentPlan.name}</h3>
+                <span className="text-xs uppercase font-bold tracking-wider text-emerald-600">বর্তমান প্যাকেজ (Subscription)</span>
+                <h3 className="text-xl font-bold text-slate-900 mt-0.5">{currentPlan.name}</h3>
               </div>
-              <span className="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-semibold border border-emerald-500/30 flex items-center space-x-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Active</span>
+              <span className="bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full font-semibold border border-emerald-200 flex items-center space-x-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>সক্রিয়</span>
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-800 my-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-100 my-4">
               <div>
-                <span className="text-xs text-slate-400 block">Download Speed</span>
-                <span className="text-lg font-bold text-white flex items-center mt-0.5">
-                  <Wifi className="w-4 h-4 text-emerald-400 mr-1.5" />
+                <span className="text-xs text-slate-500 block">ইন্টারনেট স্পিড</span>
+                <span className="text-lg font-bold text-slate-900 flex items-center mt-0.5">
+                  <Wifi className="w-4 h-4 text-emerald-600 mr-1.5" />
                   {currentPlan.speed}
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-400 block">Signal Strength</span>
-                <span className="text-lg font-bold text-emerald-400 flex items-center mt-0.5">
+                <span className="text-xs text-slate-500 block">সিগন্যাল শক্তি</span>
+                <span className="text-lg font-bold text-emerald-600 flex items-center mt-0.5">
                   <Signal className="w-4 h-4 mr-1.5" />
                   {subscriber.signalDbm} dBm
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-400 block">Valid Until</span>
-                <span className="text-lg font-bold text-white flex items-center mt-0.5">
-                  <Calendar className="w-4 h-4 text-teal-400 mr-1.5" />
+                <span className="text-xs text-slate-500 block">মেয়াদ শেষ</span>
+                <span className="text-lg font-bold text-slate-900 flex items-center mt-0.5">
+                  <Calendar className="w-4 h-4 text-teal-600 mr-1.5" />
                   {subscriber.expiryDate}
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-400 block">Account Balance</span>
-                <span className="text-lg font-bold text-amber-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 block">অ্যাকাউন্ট ব্যালেন্স</span>
+                <span className="text-lg font-bold text-amber-600 mt-0.5 block">
                   ৳{subscriber.balance}
                 </span>
               </div>
@@ -140,48 +140,48 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
 
             {/* Data Usage Bar */}
             <div className="space-y-2">
-              <div className="flex justify-between text-xs text-slate-300">
+              <div className="flex justify-between text-xs text-slate-600 font-medium">
                 <span className="flex items-center">
-                  <HardDrive className="w-3.5 h-3.5 mr-1 text-emerald-400" />
-                  Monthly Data Usage
+                  <HardDrive className="w-3.5 h-3.5 mr-1 text-emerald-600" />
+                  এ মাসের ডেটা ব্যবহার
                 </span>
-                <span className="font-semibold">{subscriber.dataUsedGB} GB / {subscriber.dataTotalGB === 999 ? 'Unlimited' : `${subscriber.dataTotalGB} GB`}</span>
+                <span>{subscriber.dataUsedGB} জিবি / {subscriber.dataTotalGB === 999 ? 'আনলিমিটেড' : `${subscriber.dataTotalGB} জিবি`}</span>
               </div>
-              <div className="w-full bg-slate-800 h-3 rounded-full overflow-hidden p-0.5">
+              <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5 border border-slate-200">
                 <div 
-                  className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-500"
                   style={{ width: `${Math.max(5, usagePercent)}%` }}
                 />
               </div>
-              <p className="text-xs text-slate-400 text-right">Fair usage policy applies for unlimited rural mesh nodes.</p>
+              <p className="text-xs text-slate-400 text-right">আনলিমিটেড গ্রাম্য মেস নেটওয়ার্কে ফেয়ার ইউজেস পলিসি (FUP) প্রযোজ্য।</p>
             </div>
           </div>
 
           {/* Quick Top-Up / Mobile Money Simulation */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-white mb-2 flex items-center">
-              <Smartphone className="w-5 h-5 text-emerald-400 mr-2" />
-              Quick Recharge & Top-Up
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center">
+              <Smartphone className="w-5 h-5 text-emerald-600 mr-2" />
+              দ্রুত রিচার্জ ও অ্যাকাউন্ট টপ-আপ
             </h3>
-            <p className="text-slate-400 text-xs mb-4">
-              Instant balance addition via rural mobile financial services or local agent cash.
+            <p className="text-slate-500 text-xs mb-4">
+              বিকাশ, নগদ বা ব্যাংক কার্ডের মাধ্যমে তাৎক্ষণিক ব্যালেন্স যোগ করুন।
             </p>
 
             <div className="space-y-4">
               {/* Select Gateway */}
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { id: 'bkash', name: 'bKash Pay', color: 'border-pink-500/50 bg-pink-500/10 text-pink-300' },
-                  { id: 'nagad', name: 'Nagad MFS', color: 'border-orange-500/50 bg-orange-500/10 text-orange-300' },
-                  { id: 'card', name: 'Debit Card / UPI', color: 'border-teal-500/50 bg-teal-500/10 text-teal-300' },
+                  { id: 'bkash', name: 'বিকাশ (bKash)', color: 'border-pink-300 bg-pink-50 text-pink-700' },
+                  { id: 'nagad', name: 'নগদ (Nagad)', color: 'border-orange-300 bg-orange-50 text-orange-700' },
+                  { id: 'card', name: 'কার্ড / ইউপিআই', color: 'border-teal-300 bg-teal-50 text-teal-700' },
                 ].map((gw) => (
                   <button
                     key={gw.id}
                     onClick={() => setSelectedGateway(gw.id as any)}
                     className={`p-3 rounded-xl border text-sm font-semibold flex flex-col items-center justify-center transition ${
                       selectedGateway === gw.id
-                        ? `${gw.color} ring-2 ring-emerald-500`
-                        : 'border-slate-800 bg-slate-800/50 text-slate-400 hover:text-white'
+                        ? `${gw.color} ring-2 ring-emerald-500 shadow-sm`
+                        : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
                     }`}
                   >
                     <CreditCard className="w-5 h-5 mb-1" />
@@ -192,7 +192,7 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
 
               {/* Amount Selector */}
               <div>
-                <label className="text-xs text-slate-400 block mb-2">Select Top-Up Amount (BDT / INR)</label>
+                <label className="text-xs text-slate-500 font-medium block mb-2">রিচার্জের পরিমাণ নির্বাচন করুন</label>
                 <div className="grid grid-cols-4 gap-2">
                   {[150, 350, 500, 750].map((amt) => (
                     <button
@@ -200,8 +200,8 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
                       onClick={() => setTopUpAmount(amt)}
                       className={`py-2.5 rounded-xl font-bold text-sm border transition ${
                         topUpAmount === amt
-                          ? 'bg-emerald-600 border-emerald-500 text-white shadow'
-                          : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                          ? 'bg-emerald-600 border-emerald-600 text-white shadow-sm'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
                       ৳{amt}
@@ -212,17 +212,17 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
 
               <button
                 onClick={handleRecharge}
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-900/50 transition flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3 rounded-xl shadow-md shadow-emerald-600/20 transition flex items-center justify-center space-x-2"
               >
-                <span>Pay ৳{topUpAmount} with {selectedGateway.toUpperCase()}</span>
+                <span>৳{topUpAmount} পেমেন্ট করুন ({selectedGateway.toUpperCase()})</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
           {/* Available Upgrade Plans */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
-            <h3 className="text-lg font-bold text-white mb-4">Available Village Fiber Plans</h3>
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-slate-900 mb-4">গ্রামের ফাইবার ইন্টারনেট প্যাকেজসমূহ</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {plans.filter(p => p.id !== 'p5').map((plan) => {
                 const isCurrent = plan.id === subscriber.currentPlanId;
@@ -231,30 +231,30 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
                     key={plan.id}
                     className={`border rounded-xl p-4 flex flex-col justify-between transition ${
                       isCurrent 
-                        ? 'border-emerald-500 bg-emerald-950/20' 
-                        : 'border-slate-800 bg-slate-800/40 hover:border-slate-700'
+                        ? 'border-emerald-500 bg-emerald-50/50 shadow-sm' 
+                        : 'border-slate-200 bg-slate-50/50 hover:border-slate-300'
                     }`}
                   >
                     <div>
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-white">{plan.name}</h4>
+                        <h4 className="font-bold text-slate-900">{plan.name}</h4>
                         {plan.popular && (
-                          <span className="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30">
-                            Most Popular
+                          <span className="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-200 font-semibold">
+                            সবচেয়ে জনপ্রিয়
                           </span>
                         )}
                       </div>
-                      <div className="text-2xl font-extrabold text-emerald-400 mb-2">
-                        ৳{plan.price} <span className="text-xs text-slate-400 font-normal">/ {plan.validityDays} days</span>
+                      <div className="text-2xl font-extrabold text-emerald-600 mb-2">
+                        ৳{plan.price} <span className="text-xs text-slate-500 font-normal">/ {plan.validityDays} দিন</span>
                       </div>
-                      <div className="space-y-1 text-xs text-slate-300 mb-4">
+                      <div className="space-y-1 text-xs text-slate-600 mb-4">
                         <div className="flex items-center">
-                          <Wifi className="w-3.5 h-3.5 text-emerald-400 mr-1.5" />
-                          <span>Speed: {plan.speed}</span>
+                          <Wifi className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
+                          <span>গতি: {plan.speed}</span>
                         </div>
                         <div className="flex items-center">
-                          <HardDrive className="w-3.5 h-3.5 text-teal-400 mr-1.5" />
-                          <span>Data: {plan.dataLimit}</span>
+                          <HardDrive className="w-3.5 h-3.5 text-teal-600 mr-1.5" />
+                          <span>ডেটা: {plan.dataLimit}</span>
                         </div>
                       </div>
                     </div>
@@ -264,11 +264,11 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
                       disabled={isCurrent}
                       className={`w-full py-2 rounded-lg text-xs font-semibold transition ${
                         isCurrent
-                          ? 'bg-emerald-500/20 text-emerald-300 cursor-default'
-                          : 'bg-slate-800 hover:bg-emerald-600 text-white border border-slate-700'
+                          ? 'bg-emerald-100 text-emerald-800 cursor-default'
+                          : 'bg-white hover:bg-emerald-600 hover:text-white text-slate-700 border border-slate-200 shadow-sm'
                       }`}
                     >
-                      {isCurrent ? 'Current Plan' : 'Switch Plan'}
+                      {isCurrent ? 'বর্তমান প্যাকেজ' : 'প্যাকেজ পরিবর্তন করুন'}
                     </button>
                   </div>
                 );
@@ -282,68 +282,68 @@ export const SubscriberDashboard: React.FC<SubscriberDashboardProps> = ({
         <div className="space-y-6">
           
           {/* Village Community Board */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg">
-            <h3 className="text-base font-bold text-white mb-4 flex items-center">
-              <Newspaper className="w-4 h-4 text-emerald-400 mr-2" />
-              Village Community Board
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <h3 className="text-base font-bold text-slate-900 mb-4 flex items-center">
+              <Newspaper className="w-4 h-4 text-emerald-600 mr-2" />
+              গ্রামের নোটিশ ও তথ্য বোর্ড
             </h3>
 
             <div className="space-y-4">
               {news.map((item) => (
-                <div key={item.id} className="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 space-y-1.5">
+                <div key={item.id} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/25 text-emerald-300">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
                       {item.category}
                     </span>
-                    <span className="text-[10px] text-slate-400">{item.date}</span>
+                    <span className="text-[10px] text-slate-500">{item.date}</span>
                   </div>
-                  <h4 className="font-semibold text-sm text-white">{item.title}</h4>
-                  <p className="text-xs text-slate-300 leading-relaxed">{item.content}</p>
+                  <h4 className="font-semibold text-sm text-slate-900">{item.title}</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">{item.content}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Weather & Tower Status Widget */}
-          <div className="bg-gradient-to-br from-slate-900 to-emerald-950/40 border border-emerald-500/20 rounded-2xl p-6 shadow-lg">
+          <div className="bg-gradient-to-br from-white to-emerald-50/50 border border-emerald-200 rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-sm font-bold text-white flex items-center">
-                <CloudSun className="w-4 h-4 text-amber-400 mr-2" />
-                Joypurhat Weather & Relay
+              <h4 className="text-sm font-bold text-slate-900 flex items-center">
+                <CloudSun className="w-4 h-4 text-amber-500 mr-2" />
+                জয়পুরহাট আবহাওয়া ও টাওয়ার
               </h4>
-              <span className="text-xs text-emerald-400 font-medium">Clear Sky 28°C</span>
+              <span className="text-xs text-emerald-700 font-semibold bg-emerald-100 px-2 py-0.5 rounded-full">পরিষ্কার ২৮° সে</span>
             </div>
 
-            <div className="space-y-3 text-xs text-slate-300">
-              <div className="flex justify-between py-1.5 border-b border-slate-800">
-                <span className="text-slate-400">Connected Tower</span>
-                <span className="font-semibold text-white">Bazaar Central (T-01)</span>
+            <div className="space-y-3 text-xs text-slate-600">
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">যুক্ত টাওয়ার নোড</span>
+                <span className="font-semibold text-slate-900">বাজার কেন্দ্রীয় (T-01)</span>
               </div>
-              <div className="flex justify-between py-1.5 border-b border-slate-800">
-                <span className="text-slate-400">Uplink Latency</span>
-                <span className="font-semibold text-emerald-400">14 ms (Ultra Fast)</span>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">আপলিংক ল্যাটেন্সি</span>
+                <span className="font-semibold text-emerald-600">১৪ মিলিঃসে (অতি দ্রুত)</span>
               </div>
               <div className="flex justify-between py-1.5">
-                <span className="text-slate-400">Solar Battery Backup</span>
-                <span className="font-semibold text-teal-400">92% (14h remaining)</span>
+                <span className="text-slate-500">সোলার ব্যাটারি ব্যাকআপ</span>
+                <span className="font-semibold text-teal-600">৯২% (১৪ ঘণ্টা বাকি)</span>
               </div>
             </div>
           </div>
 
           {/* Need Help Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-lg text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto border border-amber-500/30">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto border border-amber-200">
               <HelpCircle className="w-6 h-6" />
             </div>
-            <h4 className="font-bold text-white">Facing Connection Drop?</h4>
-            <p className="text-xs text-slate-400">
-              Report cable cuts or slow speed instantly to our village field technician team.
+            <h4 className="font-bold text-slate-900">ইন্টারনেট সংযোগে সমস্যা হচ্ছে?</h4>
+            <p className="text-xs text-slate-500">
+              ক্যাবল কাটা বা স্লো গতির সমস্যা হলে আমাদের ফিল্ড টেকনিশিয়ান টিমকে জানান।
             </p>
             <button
               onClick={onOpenSupport}
-              className="w-full bg-slate-800 hover:bg-slate-700 text-amber-300 font-semibold py-2.5 rounded-xl text-xs border border-amber-500/30 transition"
+              className="w-full bg-slate-100 hover:bg-slate-200 text-amber-800 font-semibold py-2.5 rounded-xl text-xs border border-amber-200 transition"
             >
-              Open Support Ticket
+              সাপোর্ট টিকিট খুলুন
             </button>
           </div>
 
