@@ -1,0 +1,6 @@
+{
+  "name": "Shera Link - Village Internet & Community Portal",
+  "description": "A rural community ISP management and subscriber portal featuring high-speed village fiber packages, Wi-Fi vouchers, tower health monitoring, speed diagnostics, and Shera AI network assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
